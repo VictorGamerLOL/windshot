@@ -1,0 +1,23 @@
+[package]
+name = "windshot"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+
+[dependencies]
+gtk4 = { version = "0.10.0" , features = ["v4_18"] }
+gdk4 = { version = "0.10.0" , features = ["v4_18"] }
+gsk4 = { version = "0.10.0" , features = ["v4_18"] }
+cairo-rs = { version = "0.21.1", features = ["freetype", "png"]}
+pango = { version = "0.21.1", features = ["v1_56"] } # for some reason arch has the latest of THIS but not everything else
+graphene-rs = { version = "0.21.1" }
+gio = { version = "0.21.1", features = ["v2_84"] }
+glib = { version = "0.21.1", features = ["v2_84"] }
+
+
+[profile.release]
+lto = "fat"
+opt-level = 3
+panic = "abort"
+strip = true
+codegen-units = 1
